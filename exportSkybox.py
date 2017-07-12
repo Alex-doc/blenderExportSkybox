@@ -118,7 +118,7 @@ class ExportSkybox(Operator, ExportHelper):
     filename_ext = ".png"
 
     filter_glob = StringProperty(
-            default=".png",
+            default="*.png",
             options={'HIDDEN'},
             maxlen=255,
             )
