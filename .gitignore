@@ -1,4 +1,5 @@
 # Python compiled files
+*.pyc
 .*.pyc
 
 # VIM swap files
