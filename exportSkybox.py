@@ -93,9 +93,17 @@ def run(context, filepath, resolution, focusDist, clipStart, clipEnd):
     context.scene.use_nodes = True
     
     path = filepath.split(".")
+
+    #Workaround for sky blend bug when looking up
+    world = bpy.data.worlds[0]
+    horizonColor = world.horizon_color
     
     for cam in cameras:
        context.scene.camera = cam
+       if cam.name == "top":
+          world.horizon_color = world.zenith_color;
+       else:
+          world.horizon_color = horizonColor;
        context.scene.render.filepath = path[0]+"_"+cam.name+"."+path[1]
        context.scene.render.use_compositing = True
        bpy.ops.render.render(write_still=True)
