@@ -32,7 +32,7 @@ from bpy.props import StringProperty, IntProperty, FloatProperty
 
 bl_info = {
     "name": "Export Skybox",
-    "description": "Add-on to easily export skybox-ready images of a scene.",
+    "description": "Export skybox-ready images of a scene",
     "author": "Alex Piola",
     "version": (0, 2),
     "blender": (2, 78, 0),
