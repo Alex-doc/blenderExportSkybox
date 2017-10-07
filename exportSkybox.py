@@ -5,7 +5,8 @@
 #
 #  Copyright (c) 2017 Alex Piola
 #
-#  Portions: Copyright (c) https://www.blender.org ( see https://www.blender.org/about/license/ )
+#  Portions: Copyright (c) https://www.blender.org 
+#            ( see https://www.blender.org/about/license/ )
 #
 # License
 #
@@ -31,9 +32,9 @@ from bpy.props import StringProperty, IntProperty, FloatProperty
 
 bl_info = {
     "name": "Export Skybox",
-    "description": "Export Skybox",
+    "description": "Export a Skybox",
     "author": "Alex Piola",
-    "version": (0, 1),
+    "version": (0, 2),
     "blender": (2, 78, 0),
     "location": "File -> Export",
     "warning": "Might contain bugs, use at your own risk",
@@ -93,9 +94,17 @@ def run(context, filepath, resolution, focusDist, clipStart, clipEnd):
     context.scene.use_nodes = True
     
     path = filepath.split(".")
+
+    #Workaround for sky blend bug when looking up
+    world = bpy.data.worlds[0]
+    horizonColor = world.horizon_color
     
     for cam in cameras:
        context.scene.camera = cam
+       if cam.name == "top":
+          world.horizon_color = world.zenith_color;
+       else:
+          world.horizon_color = horizonColor;
        context.scene.render.filepath = path[0]+"_"+cam.name+"."+path[1]
        context.scene.render.use_compositing = True
        bpy.ops.render.render(write_still=True)
