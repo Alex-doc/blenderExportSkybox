@@ -5,7 +5,8 @@
 #
 #  Copyright (c) 2017 Alex Piola
 #
-#  Portions: Copyright (c) https://www.blender.org ( see https://www.blender.org/about/license/ )
+#  Portions: Copyright (c) https://www.blender.org 
+#            ( see https://www.blender.org/about/license/ )
 #
 # License
 #
@@ -31,9 +32,9 @@ from bpy.props import StringProperty, IntProperty, FloatProperty
 
 bl_info = {
     "name": "Export Skybox",
-    "description": "Export Skybox",
+    "description": "Export a Skybox",
     "author": "Alex Piola",
-    "version": (0, 1),
+    "version": (0, 2),
     "blender": (2, 78, 0),
     "location": "File -> Export",
     "warning": "Might contain bugs, use at your own risk",
